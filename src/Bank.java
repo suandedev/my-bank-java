@@ -1,26 +1,34 @@
-public class Bank {
-    
-    // encapsulation
-    private String accountNumber;
-    private double balance;
+public class Bank implements MyInterface {
 
-    public Bank(String accountNumber){
+    private String accountNumber;
+    private double amount;
+
+    public Bank(String accountNumber) {
         this.accountNumber = accountNumber;
     }
 
-    public void Deposit(double amount) {
-        this.balance += amount;
+    public void deposit(String accountNumber, double amount) {
+        this.accountNumber = accountNumber;
+        this.amount = amount;
     }
 
-    public void WithDraw(double amount) {
-        this.balance -= amount;
+    public void withdraw(double amount) {
+        System.out.println("Withdrawing " + amount);
+        this.amount -= amount;
     }
 
-    public double getBalance() {
-        return this.balance;
+    public void transfer(String accountNumber, double amount) {
+        System.out.println("Transferring " + amount + " to " + accountNumber);
+        this.accountNumber = accountNumber;
+        this.amount -= amount;
     }
 
-    public String getAccountNumber() {
-        return this.accountNumber;
+    public double getDeposit(){
+        System.out.println("Depositing " + amount + " to " + accountNumber);
+        return amount;
+    }
+
+    public String getAccountNumber(){
+        return accountNumber;
     }
 }
